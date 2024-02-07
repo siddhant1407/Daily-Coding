@@ -28,6 +28,7 @@ def reverse_stack(arr):
 print("Reversed using stack: ",reverse_stack(list(arr)))
 
 #. Using Loop
+#. [1, 2, 3, 4, 5] -> [5,2,3,4,1] -> [5,4,3,2,1]
 def reverse_using_loop(arr, l, r):
     while l < r: 
         arr[l], arr[r] = arr[r], arr[l] 
