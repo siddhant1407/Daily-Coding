@@ -16,7 +16,7 @@ def linear_search(arr, x):
             return i
         else:
             continue
-
+ 
 
 ans = linear_search(arr, x)
 print("The value you entered", x , "is present at", ans ) 
