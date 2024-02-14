@@ -26,5 +26,5 @@ def bubbleSort(arr, n):
         if swap_flag == False:      #when i is greated and j has no values to traverse
             break
     return arr
-
+  
 print("The sorted Array after Bubble Sort is: ", bubbleSort(arr, n))
