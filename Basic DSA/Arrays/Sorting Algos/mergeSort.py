@@ -8,7 +8,8 @@
 # i.e., the array has only one element left (an array with one element is always sorted). Then the sorted subarrays are merged 
 # into one sorted array.
 
-# T(n) = θ(Nlog(N))
+# T(n) = θ(Nlog(N))  - The time complexity of the merge sort algorithm in the average case.
+# S(n) = O(N)        - The space complexity of the merge sort
 
 arr = [12, 11, 13, 5, 6, 7]
 
