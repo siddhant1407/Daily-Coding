@@ -38,4 +38,41 @@ def quicksol1(arr1):
             
     return  quicksol1(leftOpiv) + [pivot] + quicksol1(rightOpiv)
 print("Quick Sort Solution 1 Basic Recursive Implementation: ",quicksol1(arr1))
+
+
+# SOLUTION 2:
+# Randomized Quick Sort: In this approach, the pivot is chosen randomly from the array, and then placed at the last[IMP].
+# which helps avoid worst-case scenarios where the pivot choice may lead to unbalanced partitions.
+
+import random
+arr2 = [10, 7, 8, 9, 1, 5]
+n2 = len(arr2)
+def partition(arr2, low, high):
+    pivot_idx = random.randint(low, high)
+    pivot_val = arr2[pivot_idx]
+    arr2[pivot_idx], arr2[high] = arr2[high], arr2[pivot_idx]
+    
+    # used to place all smaller elem then pivot to left and then swap with pivot. Start -1 for no initial set val.
+    i = low - 1
+    
+    for j in range(low, high):
+        if arr2[j] <= pivot_val:
+            i+=1
+            arr2[i], arr2[j] = arr2[j], arr2[i]
+    arr2[i+1], arr2[high]  = arr2[high] , arr2[i+1]
+    return  i + 1
+
+def quicksol2(arr2, low, high):
+    if low < high:
+        pivot_idx = partition(arr2, low, high)
+        
+        # recursively sort elements on the left of pivot and elements on the right of pivot_index.
+        # AFTER 
+        
+        quicksol2(arr2, low, pivot_idx-1)
+        quicksol2(arr2, pivot_idx+1, high)
+    
+    return arr2
+
+print("Quick Sort Solution 2 Randomized Quick Sort: ",quicksol2(arr2, 0, n2-1))
     
