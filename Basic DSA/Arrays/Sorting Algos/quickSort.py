@@ -47,7 +47,7 @@ print("Quick Sort Solution 1 Basic Recursive Implementation: ",quicksol1(arr1))
 import random
 arr2 = [10, 7, 8, 9, 1, 5]
 n2 = len(arr2)
-def partition(arr2, low, high):
+def partition2(arr2, low, high):
     pivot_idx = random.randint(low, high)
     pivot_val = arr2[pivot_idx]
     arr2[pivot_idx], arr2[high] = arr2[high], arr2[pivot_idx]
@@ -64,7 +64,7 @@ def partition(arr2, low, high):
 
 def quicksol2(arr2, low, high):
     if low < high:
-        pivot_idx = partition(arr2, low, high)
+        pivot_idx = partition2(arr2, low, high)
         
         # recursively sort elements on the left of pivot and elements on the right of pivot_index.
         # AFTER 
@@ -76,3 +76,51 @@ def quicksol2(arr2, low, high):
 
 print("Quick Sort Solution 2 Randomized Quick Sort: ",quicksol2(arr2, 0, n2-1))
     
+    
+    
+# SOLUTION3:
+# Hoare's Partition Scheme: This partitioning scheme uses "two pointers" that start at the ends of the array and move towards 
+# each other to find elements to swap. It's more efficient than the Lomuto partition scheme in certain cases.
+
+# Basically, i ani j pudhe-mage janaar respectively, ani if i chi value pivot peksha mothi zali, then i++ hona thambel.
+# if j chi value pivot peksha choti zali, tar thableli i chi value and thableli j swap honar!
+
+arr3 = [10, 7, 8, 9, 1, 5]
+def partition3(arr3, low, high):
+    pivot = arr3[(low + high) // 2]  # middle element as pivot
+    
+    # two pointers initialized
+    i = low - 1
+    j = high + 1
+    
+    while True:
+        i += 1
+        # i chi value thmabel untill swap if condition satisfy nahi zali tar.
+        while arr3[i] < pivot:
+            i += 1
+            
+        j -= 1
+        # j chi value thmabel untill swap if condition satisfy nahi zali tar.
+        while arr3[j] > pivot:
+            j -= 1
+            
+        # pointers cross zale, invalid, so j return becz j chotya value varti set ahe.
+        if i >= j:
+            return j
+        
+        #  Jar donhi conditions satisfy nahi zale, tar swap mar.
+        # Swap arr[i] and arr[j]
+        arr3[i], arr3[j] = arr3[j], arr3[i]
+
+
+def quicksort3(arr3, low, high):
+    if low < high:
+        # Partition the array into two parts
+        partition_index = partition3(arr3, low, high)
+        
+        # Recursively sort the sub-arrays
+        quicksort3(arr3, low, partition_index)
+        quicksort3(arr3, partition_index + 1, high)
+    return arr3
+
+print("Quick Sort Solution 3 Hoares Partition: ",quicksort3(arr3, 0, len(arr3)-1))
