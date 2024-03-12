@@ -1,0 +1,15 @@
+A matrix is a two-dimensional array that consists of rows and columns. 
+It is an arrangement of elements in horizontal or vertical lines of entries.
+
+Declaration of Matrix or Grid
+The syntax of declaring a Matrix or two-dimensional array is very much similar to that of a one-dimensional array, given as follows.
+
+"int arr[number_of_rows][number_of_columns]; " 
+- This statement declares a variable named 'arr' which can hold the number of rows and columns.
+
+
+
+How to access data in Matrix or Grid
+Like one-dimensional arrays, matrices can be accessed randomly by using their indices to access the individual elements. 
+A cell has two indices, one for its row number, and the other for its column number. We can use X[i][j] to access the element 
+which is at the ith row and jth column of the matrix.
