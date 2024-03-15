@@ -14,7 +14,7 @@
 # The idea to solve this proble is Create a temp[] array of size n^2. Starting with the first row one by one copy the elements 
 # of the given matrix into temp[]. Sort temp[]. Now one by one copy the elements of temp[] back to the given matrix.
 
-# Basically, baher kadla 2D to 1D array karun, tya 1D array la sort kela, and mag parat 2D tayaar kela. Tadaaa, sorted array!
+# Basically, baher kadla 2D to 1D array karun eka temp array madhe, tya 1D array la sort kela, and mag parat 2D tayaar kela. Tadaaa, sorted array!
 
 arr = [[5, 4, 7],  
        [1, 3, 8],  
