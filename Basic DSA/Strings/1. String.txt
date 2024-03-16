@@ -1,0 +1,7 @@
+A String can also be defined as a sequence of characters, stored in contiguous memory locations, terminated by a special character called the null character ‘\0’
+
+In the context of Data Structures and Algorithms, strings have the following properties:
+
+Ordered: Strings are ordered sequences of characters, where each character has a unique position in the string.
+Indexable: Strings can be indexed, meaning that individual characters within a string can be accessed using a numerical index.
+Comparable: Strings can be compared to each other to determine their relative order or equality.
