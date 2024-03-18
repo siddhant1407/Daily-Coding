@@ -94,6 +94,8 @@ class LinkedList:
      
     # 3) Middle
 
+
+#INSERT OPERATIONS
 my_list = LinkedList()
 my_list.push(10)  # Insert node with data 10 at the beginning
 my_list.push(20)  # Insert node with data 20 at the beginning
