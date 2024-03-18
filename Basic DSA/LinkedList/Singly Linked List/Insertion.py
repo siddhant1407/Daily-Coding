@@ -35,7 +35,7 @@ class LinkedList:
         self.head = new_node
     
     
-    # 2) At the end of the linked list.
+    # 2) At the end of the linked list.         [QUEUES]
     #Approach: 
     # To insert a node at the end of a Linked List, we need to:
     # 2.1) Go to the last node of the Linked List
@@ -67,21 +67,52 @@ class LinkedList:
         # Ekda last la pochlo, mag last node cha next pointer, navin inserted node la point karaicha! 
         # Zala navin node end la attach!
         last.next = new_node
-    
-    
-    
-    
+     
     
     # 3) After a given node. 
+    # Approach: 
+    # To insert a node after a given node in a Linked List, we need to:
+    # 3.1) Check if the given node exists or not. 
+    #   If it do not exists, 
+    #       terminate the process.
+    #   If the given node exists,
+    #       3.1) Make the element to be inserted as a new node
+    #       3.2) Change the next pointer of given node to the new node
+    #       3.3) Now shift the original next pointer of given node to the next pointer of new node
+    
+    def insertAfter(self, prev_node, new_data):
+ 
+        # 1. check if the given prev_node exists.
+        # if nasel tar band kar.
+        if prev_node is None:
+            print("The given previous node must inLinkedList.")
+            return
+    
+        # 2. Create new node & Put in the data
+        new_node = Node(new_data)
+    
+        # new chay next la, prev node cha next value assign kar(prev_node jithe point kartoy.)
+        new_node.next = prev_node.next
+    
+        # ani, atta prev node chay next la navin node chi value assign kara.
+        prev_node.next = new_node
 
 my_list = LinkedList()
 # Inserting nodes at the beginning of the linked list
 my_list.push(10)  # Insert node with data 10 at the beginning
 my_list.push(20)  # Insert node with data 20 at the beginning
 my_list.push(30)  # Insert node with data 30 at the beginning
-my_list.append(90)
-my_list.append(100)
-my_list.append(110)
+my_list.append(90) # at the end
+my_list.append(100) # at the end
+my_list.append(110) # at the end
 
+
+node_to_insert_after = my_list.head.next            #taken the value at poition  2 (index 1) for simplicity.
+my_list.insertAfter(node_to_insert_after, 40)
+
+# If you want to pick any value from in between, you have to apply a while loop till -
+# node_to_insert_after = my_list.head
+# while node_to_insert_after is not None and node_to_insert_after.data != 90:
+#     node_to_insert_after = node_to_insert_after.next
 
 
