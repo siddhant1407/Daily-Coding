@@ -18,15 +18,18 @@ listobj.push(32)
 listobj.push(14)
 listobj.push(29)
 listobj.push(1144)
+listobj.push(1142)
 
 x = 14
 temp = listobj.head
 v = []
-
+cnt = 0
 while(temp):
-	v.append(temp.key)
-	temp = temp.next
-
+    v.append(temp.key)
+    cnt += 1
+    temp = temp.next
+ 
+print("The Count of node is: ", cnt)
 if x in v:
 	print("YES")
 else:
