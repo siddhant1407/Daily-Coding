@@ -23,6 +23,7 @@ listobj.push(1142)
 x = 14
 temp = listobj.head
 v = []
+# initialized the var to keep a count of nodes.
 cnt = 0
 while(temp):
     v.append(temp.key)
