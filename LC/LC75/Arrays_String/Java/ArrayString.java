@@ -25,9 +25,16 @@ public class ArrayString {
         // System.out.println("Can "+ n +" new flowers be placed: "  +canPlaceFlowers(flowerbed, n));
 
         // 5. Reverse Vowels of a String (Easy- 345)
-        System.out.print("Enter the String: ");
+        // System.out.print("Enter the String: ");
+        // String s1 = sc.nextLine();
+        // System.out.println("Reversed vowel String is : " + reverseVowels(s1));
+
+        // 6. Reverse Words in a String (Medium- 151)
+        System.out.print("Enter the input String: ");
         String s1 = sc.nextLine();
-        System.out.println("Reversed vowel String is : " + reverseVowels(s1));
+        System.out.println("Enter which Method(1,2) you would like to Run: ");
+        int method = sc.nextInt();
+        System.out.println("Reversed Word String is : " + reverseWords(s1,method));
 
         sc.close();
     }
@@ -125,6 +132,28 @@ public class ArrayString {
             }
         }
         return new String(s_chararr);
+    }
+
+    // 6. Reverse Words in a String (Medium- 151)
+    public static String reverseWords(String s, int method) {
+        String[] words = s.split("\\s+");
+        if (method == 1){
+            // approach 1: using collections
+            Collections.reverse(Arrays.asList(words));
+            return String.join(" ", words);
+        }
+        else {
+            // approach 2: using stringbuilder reverse operations
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = words.length-1; i>=0; i-- ){
+                sb.append(words[i]);
+                if (i > 0){
+                    sb.append(" ");
+                }
+            }
+            return sb.toString();
+        }        
     }
 
 }
