@@ -1,5 +1,27 @@
 public class Recurssion {
 
+    public static void main (String[] args) {
+        // // 1. Print number 1 to 5 (Vice Versa)
+        // int n = 10;
+        // System.out.println("Decreasing nums from is:");
+        // printNum(n);
+
+        
+        // // 2. Print Sum of first n natural numbers
+        // int n = 6;
+        // System.out.println("\n\nSum of first "+n+" natural numbers are:");
+        // printSum(1, n,  0);           // Start with 1 and call recursively
+
+
+        // Fibonachi
+        int first = 0, second = 1;
+        int n = 10;
+        System.out.print(first + ", ");     // Print First Number
+        System.out.print(second);
+        fiboRecursion(first, second, n-2);
+
+    }
+
     // 1. Print number 1 to 5 (Vice Versa)
     public static void printNum(int n){
         if (n == 0){
@@ -14,7 +36,7 @@ public class Recurssion {
         printNum(n-1);          //  (n+1) for vice versa
     }
 
-    // Print sum of first n natural numbers
+    // 2. Print sum of first n natural numbers
     public static void printSum(int i, int n, int sum){
         if  (i > n){
             System.out.println("The final sum is: "+sum);
@@ -25,16 +47,17 @@ public class Recurssion {
         System.out.println("Value at : "+i+" Sum is: "+sum);         // Displaying the value and its corresponding sum
         printSum(i + 1 , n, sum);       // Call recurs
     }
-    public static void main (String[] args) {
-        // // 1. Print number 1 to 5 (Vice Versa)
-        // int n = 10;
-        // System.out.println("Decreasing nums from is:");
-        // printNum(n);
 
-        
-        // 2. Print Sum of first n natural numbers
-        int n = 6;
-        System.out.println("\n\nSum of first "+n+" natural numbers are:");
-        printSum(1, n,  0);           // Start with 1 and call recursively
+
+    // 3. Print Fibonachi USING Recurssion
+    public static void fiboRecursion(int first, int second, int n){
+        if (n==0){
+            return;
+        }
+        int next = first + second;
+        System.out.print(", "+next);
+        fiboRecursion(second, next, (n-1));
     }
+
+    
 }
