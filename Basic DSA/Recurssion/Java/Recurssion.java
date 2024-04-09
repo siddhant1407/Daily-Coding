@@ -13,7 +13,7 @@ public class Recurssion {
         // printSum(1, n,  0);           // Start with 1 and call recursively
 
 
-        // Fibonachi
+        // 3. Print Fibonachi USING Recurssion
         int first = 0, second = 1;
         int n = 10;
         System.out.print(first + ", ");     // Print First Number
@@ -59,5 +59,5 @@ public class Recurssion {
         fiboRecursion(second, next, (n-1));
     }
 
-    
+
 }

@@ -15,9 +15,19 @@ public class ArrayString {
         // System.out.println("The GCD of String is: " + gcdOfString(s1, s2));
 
         // 3. Kids With the Greatest Number of Candies (Easy - 1431)
-        int [] candies = {2,3,5,1,3};
-        int  extraCandies = 3;
-        System.out.println("The Boolean array denoting the result is: " + kidsWithCandies(candies, extraCandies));
+        // int [] candies = {2,3,5,1,3};
+        // int  extraCandies = 3;
+        // System.out.println("The Boolean array denoting the result is: " + kidsWithCandies(candies, extraCandies));
+
+        // 4. Can Place Flowers (Easy- 605)
+        // int [] flowerbed = {1,0,0,0,0,0,1};
+        // int n = 2;
+        // System.out.println("Can "+ n +" new flowers be placed: "  +canPlaceFlowers(flowerbed, n));
+
+        // 5. Reverse Vowels of a String (Easy- 345)
+        System.out.print("Enter the String: ");
+        String s1 = sc.nextLine();
+        System.out.println("Reversed vowel String is : " + reverseVowels(s1));
 
         sc.close();
     }
@@ -70,6 +80,51 @@ public class ArrayString {
             }
         }
         return result;
+    }
+
+
+    // 4. Can Place Flowers (Easy- 605)
+    public static boolean canPlaceFlowers(int [] flowerbed, int n){
+        if (n == 0){
+            return true;
+        }
+
+        for (int i =0; i<flowerbed.length;i++){
+            if (flowerbed[i] == 0){
+                if (i == 0 || flowerbed[i-1]==0){
+                    if (i == (flowerbed.length-1) || flowerbed[i+1] ==0){
+                        flowerbed[i] = 1;
+                        --n;
+                        if (n==0){
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    // 5. Reverse Vowels of a String (Easy- 345)
+    public  static String reverseVowels(String s){
+        Set<Character>  vowels = new HashSet<>(Arrays.asList('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'));
+        char[] s_chararr = s.toCharArray();
+        int leftptr = 0;
+        int rightptr = s_chararr.length - 1;
+
+        while (leftptr < rightptr){
+            if (!vowels.contains(s_chararr[leftptr])){
+                leftptr++;
+            } else if(!vowels.contains(s_chararr[rightptr])) {
+                rightptr--;
+            }else {
+                char temp = s_chararr[leftptr];
+                s_chararr[leftptr] = s_chararr[rightptr];
+                s_chararr[rightptr] = temp;
+                leftptr++ ; rightptr--;
+            }
+        }
+        return new String(s_chararr);
     }
 
 }
