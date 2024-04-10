@@ -4,7 +4,7 @@ import java.util.*;
 public class ArrayString {
     public static void main (String args[]){
         // // 1. Merge Alternately (Easy- 1768)
-        Scanner sc = new Scanner(System.in);
+        // Scanner sc = new Scanner(System.in);
         // System.out.print("Enter the String1: ");
         // String s1 = sc.nextLine();
         // System.out.print("Enter the String2: ");
@@ -29,14 +29,20 @@ public class ArrayString {
         // String s1 = sc.nextLine();
         // System.out.println("Reversed vowel String is : " + reverseVowels(s1));
 
-        // 6. Reverse Words in a String (Medium- 151)
-        System.out.print("Enter the input String: ");
-        String s1 = sc.nextLine();
-        System.out.println("Enter which Method(1,2) you would like to Run: ");
-        int method = sc.nextInt();
-        System.out.println("Reversed Word String is : " + reverseWords(s1,method));
+        // // 6. Reverse Words in a String (Medium- 151)
+        // System.out.print("Enter the input String: ");
+        // String s1 = sc.nextLine();
+        // System.out.println("Enter which Method(1,2) you would like to Run: ");
+        // int method = sc.nextInt();
+        // System.out.println("Reversed Word String is : " + reverseWords(s1,method));
 
-        sc.close();
+        // 7. Product of Array Except Self (Medium- 238)
+        int[] nums = {1, 2, 3, 4};
+        int[] result = ArrayString.productExceptSelf(nums);
+        System.out.println("The product of others except the self is: " + Arrays.toString(result));
+
+
+        // sc.close();
     }
 
     // 1. Merge Alternately (Easy- 1768)
@@ -155,6 +161,36 @@ public class ArrayString {
             return sb.toString();
         }        
     }
+
+
+    // 7. Product of Array Except Self (Medium- 238)
+    public static int[] productExceptSelf(int [] nums){
+        // an array to store the results
+        int [] result = new int[nums.length];
+        Arrays.fill(result, 1);
+
+        // Initialize the 'pre' variable to 1
+        int pre = 1;
+        // Calculate the product of all elements to the left of the current element
+        for (int i = 0; i < nums.length; i++) {
+            // Multiply the current element of 'ans' by the value of 'pre'
+            result[i] *= pre;
+            // Update 'pre' by multiplying it with the current element of 'nums'
+            pre *= nums[i];
+        }
+        // Initialize the 'post' variable to 1
+        int post = 1;
+        // Calculate the product of all elements to the right of the current element
+        for (int j = nums.length - 1; j >= 0; j--) {
+            // Multiply the current element of 'ans' by the value of 'post'
+            result[j] *= post;
+            // Update 'post' by multiplying it with the current element of 'nums'
+            post *= nums[j];
+        }
+
+        return result;
+    }
+
 
 }
 
