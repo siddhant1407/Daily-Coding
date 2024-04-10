@@ -36,10 +36,21 @@ public class ArrayString {
         // int method = sc.nextInt();
         // System.out.println("Reversed Word String is : " + reverseWords(s1,method));
 
-        // 7. Product of Array Except Self (Medium- 238)
-        int[] nums = {1, 2, 3, 4};
-        int[] result = ArrayString.productExceptSelf(nums);
-        System.out.println("The product of others except the self is: " + Arrays.toString(result));
+        // // 7. Product of Array Except Self (Medium- 238)
+        // int[] nums = {1, 2, 3, 4};
+        // int[] result = ArrayString.productExceptSelf(nums);
+        // System.out.println("The product of others except the self is: " + Arrays.toString(result));
+
+
+        // 8.  Increasing Triplet Subsequence (medium- 334)
+        // int [] nums = {1,2,3,4,5};         // Yes
+        int [] nums = {5,4,3,2,1};          //No
+        boolean res = increasingTriplet(nums);
+        if(res == true){
+            System.out.println("Yes it has an increasing triplet subsequence");
+        }else{
+            System.out.println("No it does not have an increasing triplet subsequence");
+        }
 
 
         // sc.close();
@@ -187,10 +198,28 @@ public class ArrayString {
             // Update 'post' by multiplying it with the current element of 'nums'
             post *= nums[j];
         }
-
         return result;
     }
 
 
+    // 8.  Increasing Triplet Subsequence (medium- 334)
+    public static boolean increasingTriplet(int[] nums){
+        int num_i = Integer.MAX_VALUE;
+        int num_j = Integer.MAX_VALUE;
+       
+
+        for (int num: nums){
+            if (num <= num_i){
+                num_i = num;
+            }
+            else if (num <= num_j){
+                num_j = num;
+            }
+            else{
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
