@@ -13,12 +13,24 @@ public class Recurssion {
         // printSum(1, n,  0);           // Start with 1 and call recursively
 
 
-        // 3. Print Fibonachi USING Recurssion
-        int first = 0, second = 1;
-        int n = 10;
-        System.out.print(first + ", ");     // Print First Number
-        System.out.print(second);
-        fiboRecursion(first, second, n-2);
+        // // 3. Print Fibonachi USING Recurssion
+        // int first = 0, second = 1;
+        // int n = 10;
+        // System.out.print(first + ", ");     // Print First Number
+        // System.out.print(second);
+        // fiboRecursion(first, second, n-2);
+
+
+        // // 4. Print x^n (with stack height = n) 
+        // int x = 2, n = 5; 
+        // int output = printPower(x, n); 
+        // System.out.println("The answer for x^n (with stack height = n) is: " + output); 
+
+
+        // 5. Print x^n (with stack height = logn) 
+        int x = 2, n = 5; 
+        int output = printPowerlog(x, n); 
+        System.out.println("the answer ffor x^n (with stack height = logn) is: " + output); 
 
     }
 
@@ -59,5 +71,31 @@ public class Recurssion {
         fiboRecursion(second, next, (n-1));
     }
 
+    // 4. Print x^n (with stack height = n) 
+    public static int printPower(int x, int n) { 
+        if(n == 0) { 
+            return 1; 
+        } 
+        if(x == 0) { 
+            return 0; 
+        }
 
+        int xPowNmOne = printPower(x, n-1); 
+        int x_powN = x * xPowNmOne; 
+        return x_powN; 
+    }
+
+
+    // 5. Print x^n (with stack height = logn) 
+    public static int printPowerlog(int x, int n) { 
+        if(n == 0) { 
+            return 1; 
+        } 
+
+        if(n % 2 == 0) { 
+            return printPower(x, n/2) * printPower(x, n/2); } 
+        else { 
+            return x * printPower(x, n/2) * printPower(x, n/2); } 
+        } 
+        
 }
