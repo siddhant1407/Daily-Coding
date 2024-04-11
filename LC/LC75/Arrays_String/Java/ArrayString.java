@@ -42,17 +42,21 @@ public class ArrayString {
         // System.out.println("The product of others except the self is: " + Arrays.toString(result));
 
 
-        // 8.  Increasing Triplet Subsequence (medium- 334)
-        // int [] nums = {1,2,3,4,5};         // Yes
-        int [] nums = {5,4,3,2,1};          //No
-        boolean res = increasingTriplet(nums);
-        if(res == true){
-            System.out.println("Yes it has an increasing triplet subsequence");
-        }else{
-            System.out.println("No it does not have an increasing triplet subsequence");
-        }
+        // // 8.  Increasing Triplet Subsequence (medium- 334)
+        // // int [] nums = {1,2,3,4,5};         // Yes
+        // int [] nums = {5,4,3,2,1};          //No
+        // boolean res = increasingTriplet(nums);
+        // if(res == true){
+        //     System.out.println("Yes it has an increasing triplet subsequence");
+        // }else{
+        //     System.out.println("No it does not have an increasing triplet subsequence");
+        // }
 
 
+        // 9. String Compression (Medium- 443)
+        char [] chars = {'a','a','b','b','c','c','c'};
+        char[] ans = strCompress(chars, 0, 0);
+        System.out.println("The To string ans is: "+ Arrays.toString(ans));
         // sc.close();
     }
 
@@ -221,5 +225,31 @@ public class ArrayString {
         }
         return false;
     }
+
+
+    // 9. String Compression (Medium- 443)
+    public static char[] strCompress(char[] chars, int idx, int write_idx) {
+        while(idx < chars.length){
+            char curr_char = chars[idx];
+            int count = 0;
+
+            while (idx < chars.length && chars[idx] == curr_char) {
+                idx++;
+                count++;
+            }
+
+            chars[write_idx] = curr_char;
+            write_idx++;
+
+            if (count > 1){
+                for (char c: Integer.toString(count).toCharArray()){
+                    chars[write_idx] = c;
+                    write_idx++;
+                }
+            }       
+        }
+        return chars;
+    }
+
 }
 
