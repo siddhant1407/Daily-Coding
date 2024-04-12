@@ -30,9 +30,14 @@ public class RecurssionsNine {
         // }
 
 
-        // Q5. Move all ‘x’ to the end of the string. - O(n)
-        String input_string = "abcxxdefxxxghi";
-        moveAllXToEnd(input_string, 0, 0, "");
+        // // Q5. Move all ‘x’ to the end of the string. - O(n)
+        // String input_string = "abcxxdefxxxghi";
+        // moveAllXToEnd(input_string, 0, 0, "");
+
+
+        // Q6. Remove duplicates in a string.
+        String str = "abcadbcefghabi";
+        removeDuplicates(str, 0, "");
 
     }
     
@@ -116,5 +121,27 @@ public class RecurssionsNine {
             NewStr += curr_char;
         }
         moveAllXToEnd(str, idx+1, count, NewStr);
+    }
+
+
+    // Q6. Remove duplicates in a string.
+    // the omnipresent boolean array map due to declared public static.
+    // 26~ because the alphabets counts.
+    public static boolean [] map =  new boolean [26];
+
+    public static void removeDuplicates(String str, int idx, String NewStr){
+        // base case
+        if(str.length()==idx){
+            System.out.print(NewStr+"\n");
+            return ;
+        }
+        char curr_char = str.charAt(idx);
+        // map[curr_char - 'a'] becz 'a'  is the starting small letter which starts at index 0.
+        // so we need to subtract 'a' to find the curr_position inside thr boolean array.
+        if (map[curr_char - 'a'] == false){
+            map[curr_char - 'a'] = true;
+            NewStr += curr_char;
+        }
+        removeDuplicates(str, idx+1, NewStr);
     }
 }
