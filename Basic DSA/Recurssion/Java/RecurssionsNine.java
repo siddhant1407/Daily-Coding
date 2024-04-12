@@ -20,14 +20,19 @@ public class RecurssionsNine {
         // findFirstLastOccurrenceRecursively(str,elem, idx, -1, -1);
 
 
-        // Q4. Check if an array is sorted (strictly increasing). - O(n)
-        int [] inputs = {1, 2, 3, 4, 5};
-        boolean result = isSortedStrictlyIncreasing(inputs, 0);
-        if (result == true){
-            System.out.println("Array is strictly increasing.");
-        } else{
-            System.out.println("Array is NOT strictly increasing.");
-        }
+        // // Q4. Check if an array is sorted (strictly increasing). - O(n)
+        // int [] inputs = {1, 2, 3, 4, 5};
+        // boolean result = isSortedStrictlyIncreasing(inputs, 0);
+        // if (result == true){
+        //     System.out.println("Array is strictly increasing.");
+        // } else{
+        //     System.out.println("Array is NOT strictly increasing.");
+        // }
+
+
+        // Q5. Move all ‘x’ to the end of the string. - O(n)
+        String input_string = "abcxxdefxxxghi";
+        moveAllXToEnd(input_string, 0, 0, "");
 
     }
     
@@ -91,5 +96,25 @@ public class RecurssionsNine {
             return false;
         }
     }
- 
+
+
+    // Q5. Move all ‘x’ to the end of the string. - O(n)
+    public static void moveAllXToEnd(String str, int idx, int count, String NewStr){
+        // base case
+        if (idx == str.length()){
+            for (int i = 0; i<count;i++){
+                NewStr += 'x';
+            }
+            System.out.println("All X's to end string is: " + NewStr);
+            return;
+        }
+        
+        char curr_char = str.charAt(idx);
+        if (curr_char == 'x' || curr_char == 'X'){
+            count++;
+        }else{
+            NewStr += curr_char;
+        }
+        moveAllXToEnd(str, idx+1, count, NewStr);
+    }
 }
