@@ -1,3 +1,4 @@
+
 public class RecurssionsNine {
     public static void main (String[] args) {
 
@@ -35,14 +36,20 @@ public class RecurssionsNine {
         // moveAllXToEnd(input_string, 0, 0, "");
 
 
-        // Q6. Remove duplicates in a string.
-        String str = "abcadbcefghabi";
-        removeDuplicates(str, 0, "");
+        // // Q6. Remove duplicates in a string.
+        // String str = "abcadbcefghabi";
+        // removeDuplicates(str, 0, "");
+
+
+        // Q7. Print all the subsequences of a string.
+        String str = "abc";
+        subsequences(str, 0, "");
 
     }
     
     // Q1. Tower of Hanoi - Transfer n disks from source to destination over 3 towers.
     public static void towerOfHanoi(int n, char source, char destination, char helper){
+        // (This is the stopping condition, ALSO the final output starts returns/prints)
         if(n==1){
             System.out.println("Move disk 1 from " + source + " to " + destination);
             return;
@@ -60,6 +67,7 @@ public class RecurssionsNine {
 
     // Q2. Print a string in reverse.
     public static void printRev(String s, int idx){
+        // (This is the stopping condition, ALSO the final output starts returns/prints)
         if (idx == 0){
             System.out.print(s.charAt(idx));
             return;
@@ -71,7 +79,7 @@ public class RecurssionsNine {
 
     // Q3. Find the occurrence of the first and last occurrence of an element using recursion.
     public static void findFirstLastOccurrenceRecursively(String str, char elem, int idx, int first, int last){
-        // base cases
+        // base cases (This is the stopping condition, ALSO the final output starts returns/prints)
         if (idx == str.length()){
             System.out.println("The First  Occurrence is: "+first) ;
             System.out.println("The Last  Occurrence is: "+last) ;
@@ -91,6 +99,7 @@ public class RecurssionsNine {
 
     // Q4. Check if an array is sorted (strictly increasing). - O(n)
     public static boolean isSortedStrictlyIncreasing(int [] arr, int idx){
+        // (This is the stopping condition, ALSO the final output starts returns/prints)
         if  (idx == arr.length - 1){
             return true;
         }
@@ -105,7 +114,7 @@ public class RecurssionsNine {
 
     // Q5. Move all ‘x’ to the end of the string. - O(n)
     public static void moveAllXToEnd(String str, int idx, int count, String NewStr){
-        // base case
+        // base case (This is the stopping condition, ALSO the final output starts returns/prints)
         if (idx == str.length()){
             for (int i = 0; i<count;i++){
                 NewStr += 'x';
@@ -130,7 +139,7 @@ public class RecurssionsNine {
     public static boolean [] map =  new boolean [26];
 
     public static void removeDuplicates(String str, int idx, String NewStr){
-        // base case
+        // base case (This is the stopping condition, ALSO the final output starts returns/prints)
         if(str.length()==idx){
             System.out.print(NewStr+"\n");
             return ;
@@ -143,5 +152,24 @@ public class RecurssionsNine {
             NewStr += curr_char;
         }
         removeDuplicates(str, idx+1, NewStr);
+    }
+
+
+    // Q7. Print "all" the subsequences of a string.
+    public static void subsequences(String str, int idx, String NewStr){
+        // base case (This is the stopping condition, ALSO the final output starts returns/prints)
+        if(str.length()==idx){
+            System.out.println((NewStr));
+            return;
+        }
+        char curr_char = str.charAt(idx);
+                
+        // choice1- If the curr_char wants to be included in the subseq.
+        // Recursive case : append current character and recur for remaining characters.
+        subsequences(str, idx +  1 , NewStr + curr_char) ;
+
+        // choice2- If the curr_char DO NOT want to be included in the subseq.
+        // Recursive case : Only recur for remaining characters.
+        subsequences(str, idx+1, NewStr);
     }
 }
