@@ -1,4 +1,4 @@
-
+import java.util.*;
 public class RecurssionsNine {
     public static void main (String[] args) {
 
@@ -41,9 +41,15 @@ public class RecurssionsNine {
         // removeDuplicates(str, 0, "");
 
 
-        // Q7. Print all the subsequences of a string.
-        String str = "abc";
-        subsequences(str, 0, "");
+        // // Q7. Print all the subsequences of a string.
+        // String str = "abc";
+        // subsequences(str, 0, "");
+
+
+        // Q8. Print "all unique" subsequences of a string.
+        String str = "aaa";
+        HashSet <String> set = new HashSet<>() ;
+        subsequencesUnique(str, 0, "", set);
 
     }
     
@@ -172,4 +178,30 @@ public class RecurssionsNine {
         // Recursive case : Only recur for remaining characters.
         subsequences(str, idx+1, NewStr);
     }
+
+
+    // Q8. Print "all unique" subsequences of a string.
+    public static void subsequencesUnique(String str, int idx, String NewStr, HashSet<String> set){
+        // base case (This is the stopping condition, ALSO the final output starts returns/prints)
+        if(str.length()==idx){
+            if (set.contains(NewStr)){
+                return;
+            }else{
+                System.out.println((NewStr));
+                set.add(NewStr);
+                return;
+            }
+            
+        }
+        char curr_char = str.charAt(idx);
+                
+        // choice1- If the curr_char wants to be included in the subseq.
+        // Recursive case : append current character and recur for remaining characters.
+        subsequencesUnique(str, idx +  1 , NewStr + curr_char, set) ;
+
+        // choice2- If the curr_char DO NOT want to be included in the subseq.
+        // Recursive case : Only recur for remaining characters.
+        subsequencesUnique(str, idx+1, NewStr, set);
+    }
+
 }
