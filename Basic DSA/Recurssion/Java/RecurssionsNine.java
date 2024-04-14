@@ -46,10 +46,18 @@ public class RecurssionsNine {
         // subsequences(str, 0, "");
 
 
-        // Q8. Print "all unique" subsequences of a string.
-        String str = "aaa";
-        HashSet <String> set = new HashSet<>() ;
-        subsequencesUnique(str, 0, "", set);
+        // // Q8. Print "all unique" subsequences of a string.
+        // String str = "aaa";
+        // HashSet <String> set = new HashSet<>() ;
+        // subsequencesUnique(str, 0, "", set);
+        
+
+        // 9. Print keypad combination
+        // ( 0 -> .; 1 -> abc; 2 -> def; 3 -> ghi; 4 -> jkl; 5 -> mno; 6 -> pqrs; 7 -> tu; 8 -> vwx; 9-> yz )
+        String num = "23";
+        System.out.print("The possible keypad combinations are: ");
+        printKeyPadComb(num, 0, "");
+
 
     }
     
@@ -203,5 +211,26 @@ public class RecurssionsNine {
         // Recursive case : Only recur for remaining characters.
         subsequencesUnique(str, idx+1, NewStr, set);
     }
+
+
+        // 9. Print keypad combination
+        // ( 0 -> .; 1 -> abc; 2 -> def; 3 -> ghi; 4 -> jkl; 5 -> mno; 6 -> pqrs; 7 -> tu; 8 -> vwx; 9-> yz )
+
+        // this keypad string arr is accessible from anywhere in the class as declared public and static.
+        public static String [] keypad = {".", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
+        public static  void printKeyPadComb(String num, int idx, String result){
+            // base case
+            if (num.length() == idx){
+                System.out.print(", " + result);
+                return;
+            }
+            // choosing one digit at a time from each position of the number dialled so far.
+            char curr_char = num.charAt(idx);
+            String maps = keypad[curr_char - '0'];
+            // then recursively calling the function with next index and appending that chosen digit to the result string.
+            for (int i =0; i<maps.length() ;i++) {
+                printKeyPadComb(num, idx + 1, result + maps.charAt(i));
+            }
+        }
 
 }
