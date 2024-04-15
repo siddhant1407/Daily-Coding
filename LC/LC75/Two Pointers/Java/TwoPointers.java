@@ -31,7 +31,28 @@ public class TwoPointers {
         }
         return ptr_s == s.length();
     }
-    
+
+
+    // Container With Most Water  (Med  11)
+    public static int maxArea(int [] heights){
+        int left_ptr = 0;
+        int right_ptr = heights.length -1;
+        int finalMaxArea = Integer.MIN_VALUE;
+
+        while (left_ptr < right_ptr){
+            int area = (right_ptr - left_ptr) * Math.min(heights[left_ptr], heights[right_ptr]);
+            finalMaxArea = Math.max(finalMaxArea, area);
+
+            if  (heights[left_ptr] < heights [right_ptr]){
+                left_ptr++;
+            }else{
+                right_ptr--;
+            }
+        }
+        return finalMaxArea;
+    }
+
+
     public static void main (String[] args) {
 
         // // 1. Move Zeroes (Easy- 283)
@@ -40,9 +61,13 @@ public class TwoPointers {
         // System.out.println("The Array after moving all zeros is: "+Arrays.toString(result));
 
 
-        // Is Subsequence (Medium - 392)
-        String s = "axc"; String  t = "ahbgdc";
-        System.out.println("Is \""+s+"\" a subsequence of \""+t+"\"?~ "+isSubsequence(s, t));
+        // // Is Subsequence (Medium - 392)
+        // String s = "axc"; String  t = "ahbgdc";
+        // System.out.println("Is \""+s+"\" a subsequence of \""+t+"\"?~ "+isSubsequence(s, t));
 
+
+        // Container With Most Water  (Med  11)
+        int [] heights = {1,8,6,2,5,4,8,3,7};
+        System.out.println("The maximum water that can be contained by the container is : "+ maxArea(heights));
     }
 }
