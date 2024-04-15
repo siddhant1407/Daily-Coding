@@ -20,11 +20,35 @@ public class RecurssionAdv {
     }
 
 
+    // Q2. CountPathMaze  (can only move right ot down)
+    public static int countPath(int m, int n, int i, int j){
+        if (i == n || j == m){
+            return 0;
+        }
+        if (i == (n-1) && j == (n-1)){
+            return 1;
+        }
+        // for down motion we can go only one step downwards.
+        int down = countPath(m, n, i+1, j);
+
+        // for right motion we can go only one step right.
+        int right = countPath(m, n, i, j+1);
+
+        return down + right;
+    }
+
+
     public static void main (String[] args) {
 
-        // Q1. Print all the permutations of a string.
-        String str = "abc";
-        printPermutation(str, "");
+        // // Q1. Print all the permutations of a string.
+        // String str = "abc";
+        // printPermutation(str, "");
+
+
+        // Q2. CountPathMaze (can only move right ot down)
+        int n = 3; int m = 3;
+        System.out.println("Number of paths to reach bottom right corner: "+countPath(m, n, 0, 0));
+
     }
     
 }
