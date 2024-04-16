@@ -38,6 +38,31 @@ public class RecurssionAdv {
     }
 
 
+    // Q3. Tiling problem- Place Tiles of size 1 x m in a floor of size n x m.
+    public static int placeTiles(int n, int m){
+        // if n==m, then in last there are only 2 options left for placement.
+        // either all tiles will be placed vertically or horizontally.
+        if (n==m){return 2;}
+
+        // if n is smaller than m, then in last there is only one option left.
+        if (n<m){return 1;}
+
+        // Vertical Placements- as the tile is 1xm (len x breadth), placing a tile vertically inside nxm (len x breadth) grid,
+        // means that it's going to cover at (n-m)
+        int verPlacements = placeTiles(n-m, m);
+
+        // Horizontal Placements- as the tile is 1xm (len x breadth), placing a tile horizontally inside nxm (len x breadth) grid,
+        // means that it's going to cover at (n-1)
+        int horPlacements = placeTiles(n-1, m);
+
+        return verPlacements + horPlacements;
+    }
+
+
+    // Q4. Find the number of ways in which you can invite n people to your party, single or in pairs
+
+
+
     public static void main (String[] args) {
 
         // // Q1. Print all the permutations of a string.
@@ -45,9 +70,14 @@ public class RecurssionAdv {
         // printPermutation(str, "");
 
 
-        // Q2. CountPathMaze (can only move right ot down)
-        int n = 3; int m = 3;
-        System.out.println("Number of paths to reach bottom right corner: "+countPath(m, n, 0, 0));
+        // // Q2. CountPathMaze (can only move right ot down)
+        // int n = 3; int m = 3;
+        // System.out.println("Number of paths to reach bottom right corner: "+countPath(m, n, 0, 0));
+
+
+        // Q3. Tiling problem- Place Tiles of size 1 x m in a floor of size n x m.
+        int n = 4; int m = 2;
+        System.out.println("Number of ways to tile the floor using given dimensions: "+placeTiles(n, m));
 
     }
     
