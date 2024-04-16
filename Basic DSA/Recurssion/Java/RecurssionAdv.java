@@ -60,6 +60,24 @@ public class RecurssionAdv {
 
 
     // Q4. Find the number of ways in which you can invite n people to your party, single or in pairs
+    public static int numWays(int n){
+        // base case- If 1 or less than 1 (i.e: when (n-2) on pair brings 0)
+        if (n<=1){return 1;}
+        
+        //  If there are more than two persons then we have two choices:
+        //  1. sinlge invitation, where if a person is invited as a single then, (n-1) people remain to invite.
+        //  This is done by recursively calling the function on n-1 below.
+        int way1 = numWays(n - 1);
+
+        // 2. pair invitation, where if a pair is coming then, after selecting one person from the pair (n-1) and then
+        //  We also have another choice where we include one person and recurse on n-2 above.
+        int way2 = (n-1) * numWays(n - 2);
+
+        return way1 + way2;
+    }
+
+
+    // Q.5 Print all the subsets of a set of first n natural numbers
 
 
 
@@ -75,9 +93,18 @@ public class RecurssionAdv {
         // System.out.println("Number of paths to reach bottom right corner: "+countPath(m, n, 0, 0));
 
 
-        // Q3. Tiling problem- Place Tiles of size 1 x m in a floor of size n x m.
-        int n = 4; int m = 2;
-        System.out.println("Number of ways to tile the floor using given dimensions: "+placeTiles(n, m));
+        // // Q3. Tiling problem- Place Tiles of size 1 x m in a floor of size n x m.
+        // int n = 4; int m = 2;
+        // System.out.println("Number of ways to tile the floor using given dimensions: "+placeTiles(n, m));
+
+
+        // // Q4. Find the number of ways in which you can invite n people to your party, single or in pairs
+        // int n = 4;
+        // System.out.println("The number of ways of invitation (single+pair) total is: "+numWays(n));
+
+
+        // Q.5 Print all the subsets of a set of first n natural numbers
+        
 
     }
     
