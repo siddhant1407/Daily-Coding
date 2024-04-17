@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class RecurssionAdv {
 
     // Q1. Print all the permutations of a string.
@@ -78,6 +80,28 @@ public class RecurssionAdv {
 
 
     // Q.5 Print all the subsets of a set of first n natural numbers
+    public static void printSubset(ArrayList<Integer> subset){
+        for (int i =0;  i <subset.size(); i++){
+            System.out.print(subset.get(i)+" ");
+        }
+        System.out.println("");
+    }
+    public static void findSubsets(int n, ArrayList<Integer> subset){
+        // base case
+        if (n ==0){
+            printSubset(subset);
+            return;
+        }
+        // Case1: To be added
+        //  add current element to subset and call findSubsets() with n-1 and current element added.
+        subset.add(n);
+        findSubsets(n-1, subset);
+
+        // Case2: not to be added
+        // remove current element from subset and call findSubsets() with n-1.
+        subset.remove(subset.size()-1);   //when added, it appends to the last. So remove the last using the size-1.
+        findSubsets(n-1, subset);
+    }
 
 
 
@@ -104,8 +128,8 @@ public class RecurssionAdv {
 
 
         // Q.5 Print all the subsets of a set of first n natural numbers
-        
-
+        int n = 3;
+        ArrayList<Integer> subSet = new ArrayList<>();
+        findSubsets(n,subSet);
     }
-    
 }
