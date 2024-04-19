@@ -60,6 +60,48 @@ public class Sorting{
             arr[j] = merged[i];
         }
     }
+
+
+
+    // 5. Quick  Sort: A Divide and Conquer algorithm. It works by selecting a pivot element from the array and partition.
+    public static int partition(int[] arr, int low, int high){
+        // set pivot element at its correct position (last  element of array)
+        int pivot = arr[high];
+        //  pointer for greater element
+        int i = low - 1;
+
+        // loop through all elements in data part of array
+        for (int j=low; j<high; j++){
+            // if current element is smaller than pivot.
+            if (arr[j] < pivot){
+                // increment by 1 and swap elements.
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        // to set the pivot at its correct position.
+        i++;
+        int temp = arr[i];
+        arr[i] = pivot;
+        arr[high] = temp;
+        return i;
+    }
+
+    public static void quickSort1(int[] arr, int start, int end){
+        
+        if (start < end){
+            // get a pivot_idx from thr partition function.
+            int pivot_idx = partition(arr,start,end);
+
+            //  recursively sort elements on the left of pivot (i.e: Smaller than the current pivot).
+            quickSort1(arr, start, pivot_idx-1);
+            //  recursively sort elements on the right of pivot (i.e: greater than the current pivot).
+            quickSort1(arr, pivot_idx+1, end);
+        }
+     }
+
     
 
     public static void main(String[] args) {
@@ -120,9 +162,17 @@ public class Sorting{
         // 4. Merge Sort:
         int [] arr4 = {6,5,7,1,9,8};
         int n = arr4.length;
-        System.out.println("\nMerge Sort:");
+        System.out.print("\nMerge Sort: ");
         mergeSort_Divide(arr4, 0, n - 1);
         printArray(arr4);
+
+
+        // 5. Quick  Sort:
+        int [] arr5 = {6,5,7,1,9,8};
+        int n5 = arr5.length;
+        System.out.print("\nQuick Sort: ");
+        quickSort1(arr5, 0, n5-1);
+        printArray(arr5);
 
     }
 }
