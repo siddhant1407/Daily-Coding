@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Sorting{
 
     public static void printArray(int arr[]){
@@ -102,6 +104,41 @@ public class Sorting{
         }
      }
 
+    public static int[] quickSort2(int[] arr){
+        if (arr.length <= 1) {
+            return arr;
+        }
+        
+        int pivot = arr[0];
+        ArrayList <Integer> leftOPivot = new ArrayList<>();
+        ArrayList <Integer> rightOPivot = new ArrayList<>();
+
+        for (int i = 1; i<arr.length; i++) {
+            if (arr[i] < pivot) {
+                leftOPivot.add(arr[i]);
+            } else {
+                rightOPivot.add(arr[i]);
+            }
+        }
+
+        int[] leftArray = (quickSort2(arrayListToArray(leftOPivot)));
+        int[] rightArray = (quickSort2(arrayListToArray(rightOPivot)));
+
+        int[] sortedArray = new int[arr.length];
+        System.arraycopy(leftArray, 0, sortedArray, 0, leftArray.length);
+        sortedArray[leftArray.length] = pivot;
+        System.arraycopy(rightArray, 0, sortedArray, leftArray.length + 1, rightArray.length);
+
+        return sortedArray;
+    }
+    public static int[] arrayListToArray(ArrayList<Integer> list) {
+        int[] array = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            array[i] = list.get(i);
+        }
+        return array;
+    }
+
     
 
     public static void main(String[] args) {
@@ -170,9 +207,12 @@ public class Sorting{
         // 5. Quick  Sort:
         int [] arr5 = {6,5,7,1,9,8};
         int n5 = arr5.length;
-        System.out.print("\nQuick Sort: ");
+        System.out.print("\nQuick Sort Method1 (partition function and recursive calls): ");
         quickSort1(arr5, 0, n5-1);
         printArray(arr5);
 
+        System.out.print("\nQuick Sort Method2 (List operations): ");
+        int [] ans = quickSort2(arr5);
+        printArray(ans);
     }
 }
