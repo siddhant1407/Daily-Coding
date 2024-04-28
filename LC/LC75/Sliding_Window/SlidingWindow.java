@@ -57,6 +57,31 @@ public class SlidingWindow{
     }
 
 
+    // 3. Max Consecutive Ones III (M- 1004)
+    public static int longestOnes(int[] nums, int k) {
+        int zeroCount = 0;
+        int i= 0; //initial pointer (StartIndex)
+        int result = 0;
+        // j will traverse and check up with "i"
+        for (int j=0; j<nums.length; j++){
+            //  If we find a 0 at index "j", then we need to increase the count of zeros.
+            if (nums[j]==0){
+                //  We keep increasing the pointer until we have "zeroCount" number of 0's
+                zeroCount++;
+            }
+            // if the count of zero is greater than k! increment "i" by one, until it encounters a zero~ then decrement the zeroCount.
+            while(zeroCount>k){         // if statement can also be used here!
+                if (nums[i] ==0){
+                    zeroCount--;
+                }
+                // keep incrementing i, both: found a zero or non-zero.
+                i++;
+            }
+            //  Keep track of maximum length seen so far. Store the max in result.
+            result = Math.max(result, j-i+1);
+        }
+        return result; 
+    }
     public static void main (String[] args) {
 
         // 1. Maximum Average Subarray I (E- 643)
@@ -70,5 +95,10 @@ public class SlidingWindow{
         System.out.println("The max num of vowels present inside k are: "+ maxVowels(s, k2));
 
 
+        // 3. Max Consecutive Ones III (M- 1004)
+        int [] nums3 = {1,1,1,0,0,0,1,1,1,1,0};
+	    int k3 = 2;
+	    int ans = longestOnes(nums3, k3);
+	    System.out.println(ans);
     }
 }
