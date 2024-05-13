@@ -1,4 +1,5 @@
 // import java.util.*;
+import java.util.Collections;
 import java.util.LinkedList;
 
 
@@ -26,6 +27,10 @@ public class LL_CollFrame {
 
         // last and also from a particular index.
         list.removeFirst();
+        System.out.println(list);
+
+        Collections.reverse(list);
+        System.out.print("After Reversal: ");
         System.out.println(list);
         
 
