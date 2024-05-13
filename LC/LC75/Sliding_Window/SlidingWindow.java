@@ -58,6 +58,7 @@ public class SlidingWindow{
 
 
     // 3. Max Consecutive Ones III (M- 1004)
+    // Window where, if zero count exceeds, start shrink the window ffrom left. (i.e: start++)
     public static int longestOnes(int[] nums, int k) {
         int zeroCount = 0;
         int i= 0; //initial pointer (StartIndex)
@@ -82,6 +83,30 @@ public class SlidingWindow{
         }
         return result; 
     }
+
+
+    // 4. Longest Subarray of 1's After Deleting One Element (M- 1493)
+    public static int longestSubarray(int[] nums) {
+        int max_len = 0;
+        int start = 0;
+        int zero_count = 0;
+
+        for (int end=0; end<nums.length; end++){
+            if (nums[end] ==0){
+                zero_count++;
+            }
+            while (zero_count >1){
+                if (nums[start]==0){
+                    zero_count--;
+                }
+                start++;
+            }
+            max_len = Math.max(max_len, end-start);
+        }
+        return max_len;        
+    }
+
+
     public static void main (String[] args) {
 
         // 1. Maximum Average Subarray I (E- 643)
@@ -100,5 +125,10 @@ public class SlidingWindow{
 	    int k3 = 2;
 	    int ans = longestOnes(nums3, k3);
 	    System.out.println(ans);
+
+
+        // 4. Longest Subarray of 1's After Deleting One Element (M- 1493)
+        int [] nums4 = {1,1,0,1};
+        System.out.println("The Longest Subarray of 1's After Deleting One Element is: " + longestSubarray(nums4));
     }
 }
