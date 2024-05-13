@@ -107,6 +107,53 @@ public class LinkedList {
         return size;
     }
 
+    // REVERSE A LL~ Iterative approach.
+    public void reverseIterative(){
+        if (head == null || head.next == null){
+            return ;
+        }
+        // set the head as the prev node
+        Node prevNode = head;
+        // the middle (2nd) one as the current node.
+        Node currentNode = head.next;
+
+        // till current node reaches the last null
+        while(currentNode != null){
+            // next to the curr node is the next node.
+            Node nextNode = currentNode.next;
+            // point the next of the curr node to the prev node to reverse
+            currentNode.next = prevNode;
+
+            // update the nodes
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+        // we realise that the first conn (between the head and curr initially) is still there as it was the initial head position.
+        head.next = null;       //set the prev head to null
+        head = prevNode;        //make the prev node as the new head as the curr will be pointing null last.
+        
+    }
+
+
+    // REVERSE A LL~ Recursive approach.
+    public Node reverseRecursive(Node head){
+        if (head == null || head.next == null){
+            return head;
+        }   
+
+        // set each new node as a new head until you reach the end node. Once the end node is set head, while returning the list will auto reverse.
+        Node newHead = reverseRecursive(head.next);
+
+        // 2 -> 3; 3 -> 2   Make 3 point at again 2 .
+        head.next.next = head;
+        // set the prev conn from 2->3 as NULL.
+        head.next = null;
+
+        return newHead;
+    }
+
+
+
     // PRINT THE LIST.
     public void printList() {
         if (head == null){
@@ -130,9 +177,14 @@ public class LinkedList {
         list.addLast("list");
         list.addFirst("this");
         list.printList();
-        list.delLast();
-        list.printList();
+        // list.delLast();
+        // list.printList();
 
         System.out.println(list.getSize());
+        // list.reverseIterative();
+        list.head = list.reverseRecursive(list.head);
+        list.printList();
+
+
     }
 }
