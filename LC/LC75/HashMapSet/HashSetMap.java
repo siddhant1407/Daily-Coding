@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class HashSetMap {
@@ -46,12 +48,42 @@ public class HashSetMap {
         return res;
 
     }
+
+
+    // 2. Unique Number of Occurrences [E- 1207]
+    public static boolean uniqueOccurrences(int[] arr) {
+        // create a hashmap to store the keys and the values(occurances)
+        Map <Integer, Integer> occurances = new HashMap<>();
+
+        for (int key: arr){
+            // traverse all arr, put the the arr in map-if the value found get it and add'1' or if not found, set the default to zero'0'. 
+            occurances.put(key, occurances.getOrDefault(key, 0)+1);
+        }
+
+        // create a set to store the uniqu occurances values.
+        Set <Integer> unqset = new HashSet<>();
+        // travesing thru the keys.
+        for (int key: occurances.keySet()){
+            // '.get' gets the value for the given 'key'. If occurance val already present, return false.
+            if (!unqset.add(occurances.get(key))){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     public static void main(String[] args) {
 
         // 1. Find the Difference of Two Arrays [E- 2215]
         int [] nums1 = {1,2,3};
         int [] nums2 = {2,4,6};
-        System.out.println(findDifference(nums1, nums2));
+        System.out.println("The difference is (unique to their sets): "+findDifference(nums1, nums2));
+
+
+        // 2. Unique Number of Occurrences [E- 1207]
+        int [] arr = {1,2,2,1,1,3};
+        System.out.println("Are the occurance unique?- "+uniqueOccurrences(arr));
     }
     
 }
