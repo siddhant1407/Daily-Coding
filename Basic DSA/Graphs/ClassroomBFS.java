@@ -73,9 +73,9 @@ public class ClassroomBFS {
         ArrayList<Edge> graph [] = new ArrayList[v];
 
         createGraph(graph);
-
+        
+        // For BFS
         boolean visited[] = new boolean[v];
-
         // if the graphs is disconnected! Then follow this loop to get the start at each one.
         for (int i=0; i<graph.length; i++){
             if (visited[i]==false){
